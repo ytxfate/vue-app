@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div class="header-logo">Vue App Template</div>
+    <div class="header-logo">
+      <router-link to="/">
+        Vue App Template Logo
+      </router-link>
+    </div>
     <div class="header-nav">
       <el-menu
         class="el-menu-demo"
         mode="horizontal"
         background-color="#52616a"
-        text-color="#fff"
+        text-color="#cfccc9"
         active-text-color="#ffd04b"
       >
         <el-menu-item index="1">菜单导航1</el-menu-item>
@@ -24,38 +28,76 @@
         </el-submenu>
         <el-menu-item index="3">菜单导航3</el-menu-item>
         <el-menu-item index="4">
-          <a href="https://www.ele.me" target="_blank">链接导航</a>
+          <a href="/" target="_self">链接导航</a>
         </el-menu-item>
       </el-menu>
     </div>
     <div class="header-user">
-      User Logo
+      <div class="user-logo" @click="userLogoStatus = !userLogoStatus">
+        <el-avatar :size="50" :src="circleUrl"></el-avatar>
+      </div>
     </div>
+    <transition
+      name="user-operate-show"
+      enter-active-class="animated fadeInRight"
+      leave-active-class="animated fadeOutRight"
+    >
+      <div class="user-operate" v-if="userLogoStatus" @click="userLogoStatus = !userLogoStatus">
+        <el-menu
+          class="el-menu-vertical-demo"
+          background-color="#e6e6e6"
+          text-color="#606266"
+          active-text-color="#ffd04b"
+        >
+          <el-menu-item index="1">
+            <span slot="title" @click="logout">退出登录</span>
+          </el-menu-item>
+        </el-menu>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data () {
+    return {
+      circleUrl:
+        'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+      userLogoStatus: false
+    }
+  },
+  methods: {
+    logout () {
+      // 退出登录
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header-logo {
   position: fixed;
   top: 0;
   left: 0;
-  width: 220px;
+  min-width: 220px;
   height: 60px;
   line-height: 60px;
   text-align: center;
+  a {
+    text-decoration: none;
+    color: #fed71a;
+  }
 }
 .header-nav {
   position: fixed;
   top: 0;
   left: 220px;
-  right: 220px;
+  right: 100px;
   height: 60px;
+  min-width: 500px;
   line-height: 60px;
   text-align: center;
 }
@@ -63,9 +105,27 @@ export default {
   position: fixed;
   top: 0;
   right: 0;
-  width: 220px;
+  width: 80px;
   height: 60px;
   line-height: 60px;
   text-align: center;
+}
+.user-logo {
+  height: 50px;
+  padding: 5px;
+  cursor: pointer;
+}
+.user-logo:hover {
+  background-color: #424e55;
+}
+.user-operate {
+  width: 100px;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  z-index: 100;
+  background-color: #e6e6e6;
+  top: 65px;
+  right: 5px;
 }
 </style>

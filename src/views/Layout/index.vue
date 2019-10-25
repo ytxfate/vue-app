@@ -7,7 +7,16 @@
       <div class="layout-nav">
         <Nav/>
       </div>
-      <div class="layout-main"></div>
+      <div class="layout-main">
+        <transition
+          name="user-operate-show"
+          enter-active-class="animated fadeInUP"
+          leave-active-class="animated fadeOutDown"
+          mode="out-in"
+        >
+          <router-view/>
+        </transition>
+      </div>
     </div>
     <div class="layout-footer">
       <Footer/>
@@ -53,6 +62,7 @@ export default {
   right: 0;
   bottom: 60px;
   background-color: #519D9E;
+  z-index: -1;
   .layout-nav {
     position: fixed;
     top: 60px;
@@ -67,7 +77,8 @@ export default {
     bottom: 60px;
     left: 220px;
     right: 0;
-    background-color: #fcbe32;
+    background-color: #c0c4c3;
+    overflow-y: scroll;
   }
 }
 .layout-footer {
@@ -76,6 +87,6 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #c9d6de;
+  background-color: #f4f5f9;
 }
 </style>
