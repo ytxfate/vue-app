@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import store from '../../../store/index'
 export default {
   name: 'Header',
   data () {
@@ -69,9 +70,11 @@ export default {
     }
   },
   methods: {
-    logout () {
+    async logout () {
       // 退出登录
-      this.$router.push('/login')
+      await store.dispatch('user/logout').then(() => {
+        location.reload()
+      })
     }
   }
 }

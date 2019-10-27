@@ -7,6 +7,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import animated from 'animate.css'
 import './permission'
 
+// 引入 mock 文件
+import '../mock/mock.js'
+
 Vue.config.productionTip = false
 
 Vue.use(animated)
