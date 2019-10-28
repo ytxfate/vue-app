@@ -57,3 +57,35 @@ Mock.mock('/api/user/get_routers', 'post', (data) => {
     ]
   }
 })
+
+Mock.mock('/api/user/login', 'post', (data) => {
+  const { username } = JSON.parse(data.body)
+  if (username === 'admin') {
+    return {
+      'code': 200,
+      'isSuccess': true,
+      'msg': '请求成功',
+      'response': {
+        'jwt': 'admin-token'
+      }
+    }
+  } else if (username === 'user') {
+    return {
+      'code': 200,
+      'isSuccess': true,
+      'msg': '请求成功',
+      'response': {
+        'jwt': 'user-token'
+      }
+    }
+  } else {
+    return {
+      'code': 200,
+      'isSuccess': true,
+      'msg': '请求成功',
+      'response': {
+        'jwt': 'guest-token'
+      }
+    }
+  }
+})

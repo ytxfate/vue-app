@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import store from '../../store/index'
 export default {
   name: 'Login',
   data () {
@@ -39,7 +40,10 @@ export default {
       }
     }
     return {
-      formValues: {},
+      formValues: {
+        username: 'admin',
+        password: '123456'
+      },
       rules: {
         username: [{ validator: validateUserName, trigger: 'blur' }],
         password: [{ validator: validatePassWord, trigger: 'blur' }]
@@ -50,11 +54,13 @@ export default {
     onSubmit () {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.$message({
-            type: 'success',
-            message: '登录成功'
+          store.dispatch('user/login', this.formValues).then(() => {
+            this.$message({
+              type: 'success',
+              message: '登录成功'
+            })
+            this.$router.push('/')
           })
-          this.$router.push('/')
         }
         return false
       })

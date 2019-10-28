@@ -16,6 +16,7 @@ export default new Vuex.Store({
     user
   },
   getters: {
-    selfRouters: state => state.user.selfRouters
+    selfRouters: state => state.user.selfRouters,
+    token: state => state.user.token
   }
 })
