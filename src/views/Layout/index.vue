@@ -77,8 +77,9 @@ export default {
     bottom: 60px;
     left: 220px;
     right: 0;
-    background-color: #c0c4c3;
+    background-color: white; // #c0c4c3;
     overflow-y: scroll;
+    padding: 20px;
   }
 }
 .layout-footer {
@@ -88,5 +89,6 @@ export default {
   left: 0;
   right: 0;
   background-color: #f4f5f9;
+  border-top: 1px #dbdddd solid;
 }
 </style>
