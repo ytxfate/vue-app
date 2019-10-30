@@ -1,4 +1,4 @@
-import { routerComponentMap } from '../router/index'
+import { routerComponentMap } from '@/router/index'
 
 const makeUpRouters = (routers) => {
   return routers.map(router => {

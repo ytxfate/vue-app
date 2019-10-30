@@ -1,6 +1,6 @@
-import { getRouters, login } from '../../api/user'
-import { resetRouter } from '../../router/index'
-import { setToken, removeToken } from '../../utils/auth'
+import { getRouters, login } from '@/api/user'
+import { resetRouter } from '@/router/index'
+import { setToken, removeToken } from '@/utils/auth'
 
 export default {
   namespaced: true,

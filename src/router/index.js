@@ -9,10 +9,10 @@ VueRouter.prototype.push = function push (location) {
 }
 
 export const routerComponentMap = {
-  layout: () => import('../views/Layout/index.vue'),
-  home: () => import('../views/Home.vue'),
-  about: () => import('../views/About.vue'),
-  login: () => import('../views/Login/index.vue')
+  layout: () => import('@/views/Layout/index.vue'),
+  home: () => import('@/views/Home.vue'),
+  about: () => import('@/views/About.vue'),
+  login: () => import('@/views/Login/index.vue')
 }
 
 /* ================ route 结构

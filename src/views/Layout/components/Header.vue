@@ -59,12 +59,12 @@
 </template>
 
 <script>
-import store from '../../../store/index'
+import store from '@/store/index'
 export default {
   name: 'Header',
   data () {
     return {
-      circleUrl: require('../../../static/images/user-logo.png'),
+      circleUrl: require('@/static/images/user-logo.png'),
       userLogoStatus: false
     }
   },

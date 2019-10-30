@@ -1,11 +1,12 @@
-import router from './router/index'
-import store from './store/index'
-import makeUpRouters from './utils/makeUpRouters'
-import { Message } from 'element-ui'
+import router from '@/router/index'
+import store from '@/store/index'
+import makeUpRouters from '@/utils/makeUpRouters'
+// import { Message } from 'element-ui'
+import Message from 'element-ui/packages/message'
 // 页面跳转时出现在浏览器顶部的进度条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import { getToken } from './utils/auth'
+import { getToken } from '@/utils/auth'
 
 const whitePathList = ['/login']
 

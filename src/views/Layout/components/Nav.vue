@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import router from '../../../router/index'
-import SidebarItem from './SidebarItem'
+import router from '@/router/index'
+import SidebarItem from './SidebarItem.vue'
 export default {
   name: 'Nav',
   computed: {
