@@ -14,6 +14,7 @@ var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var VueLoaderPlugin = require('vue-loader/lib/plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, './src/main.js'), // 入口文件
@@ -28,7 +29,12 @@ module.exports = {
       filename: 'index.html', // 生成的内存中页面的名称
       favicon: path.join(__dirname, './public/favicon.ico')
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CompressionPlugin({
+      test: /.js$|.html$|.css/, // 匹配文件名
+      threshold: 10240, // 对超过10k的数据进行压缩
+      deleteOriginalAssets: false // 是否删除原文件
+    })
   ],
   module: { // 配置第三方 loader 模块
     rules: [ // 配置第三方模块的匹配规则

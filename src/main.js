@@ -2,9 +2,17 @@ import Vue from 'vue'
 import App from '@/App.vue'
 import router from '@/router'
 import store from '@/store'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import animated from 'animate.css'
+import {
+  Menu,
+  Submenu,
+  MenuItem,
+  Form,
+  FormItem,
+  Button,
+  Message,
+  Input
+} from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 import '@/permission'
 
 // 引入 mock 文件
@@ -12,8 +20,16 @@ import '../mock/mock.js'
 
 Vue.config.productionTip = false
 
-Vue.use(animated)
-Vue.use(Element)
+// Element
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Button)
+Vue.use(Input)
+
+Vue.prototype.$message = Message
 
 new Vue({
   router,

@@ -60,6 +60,7 @@
 
 <script>
 import store from '@/store/index'
+import { Avatar } from 'element-ui'
 export default {
   name: 'Header',
   data () {
@@ -75,6 +76,9 @@ export default {
         location.reload()
       })
     }
+  },
+  components: {
+    'el-avatar': Avatar
   }
 }
 </script>
