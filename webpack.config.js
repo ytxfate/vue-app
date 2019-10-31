@@ -27,7 +27,7 @@ module.exports = {
   entry: path.join(__dirname, './src/main.js'), // 入口文件
   output: {
     path: path.join(__dirname, './dist'), // 输出目录
-    filename: 'js/bundle-[name]-[contenthash].js' // 输出文件名
+    filename: 'js/bundle-[name]-[hash:8].js' // 输出文件名
   },
   plugins: [ // 所有 webpack 插件的配置节点
     // new BundleAnalyzerPlugin(),
