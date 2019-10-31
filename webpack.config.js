@@ -8,6 +8,7 @@
  * npm i url-loader file-loader -D
  * npm i -D babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime @babel/plugin-proposal-class-properties
  * npm i vue-loader vue-template-compiler -D
+ * npm i clean-webpack-plugin -D
  */
 
 var path = require('path')
@@ -15,12 +16,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var VueLoaderPlugin = require('vue-loader/lib/plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, './src/main.js'), // 入口文件
   output: {
     path: path.join(__dirname, './dist'), // 输出目录
-    filename: 'bundle.js' // 输出文件名
+    filename: 'js/bundle-[name]-[hash:8].js' // 输出文件名
   },
   plugins: [ // 所有 webpack 插件的配置节点
     // new BundleAnalyzerPlugin(),
@@ -34,7 +36,8 @@ module.exports = {
       test: /.js$|.html$|.css/, // 匹配文件名
       threshold: 10240, // 对超过10k的数据进行压缩
       deleteOriginalAssets: false // 是否删除原文件
-    })
+    }),
+    new CleanWebpackPlugin()
   ],
   module: { // 配置第三方 loader 模块
     rules: [ // 配置第三方模块的匹配规则
