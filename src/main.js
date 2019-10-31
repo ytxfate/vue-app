@@ -15,6 +15,10 @@ import {
 // import 'element-ui/lib/theme-chalk/index.css'
 import '@/permission'
 
+// css 文件
+import 'animate.css'
+import 'element-ui/lib/theme-chalk/index.css'
+
 // 引入 mock 文件
 import '../mock/mock.js'
 
