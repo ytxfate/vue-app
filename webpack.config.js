@@ -30,7 +30,7 @@ module.exports = {
     filename: 'js/bundle-[name]-[hash:8].js' // 输出文件名
   },
   plugins: [ // 所有 webpack 插件的配置节点
-    // new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(), // 可视化webpack输出文件的大小
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './public/index.html'), // 模板文件路径
       filename: 'index.html', // 生成的内存中页面的名称
