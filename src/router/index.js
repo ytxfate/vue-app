@@ -12,7 +12,8 @@ export const routerComponentMap = {
   layout: () => import('@/views/Layout/index.vue'),
   home: () => import('@/views/Home.vue'),
   about: () => import('@/views/About.vue'),
-  login: () => import('@/views/Login/index.vue')
+  login: () => import('@/views/Login/index.vue'),
+  menuManager: () => import('@/views/Authority/MenuManager/index.vue')
 }
 
 /* ================ route 结构

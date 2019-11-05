@@ -25,21 +25,28 @@ router.beforeEach(async (to, from, next) => {
       NProgress.done()
     } else {
       next()
+      NProgress.done()
     }
   } else {
-    // 判断是否获取 routers
-    if (store.getters.selfRouters.length <= 0) {
-      await store.dispatch('user/getRouters').then(res => {
-        const { response } = res
-        // 替换 component
-        const userRouters = makeUpRouters(response)
-        // 添加 routers
-        router.addRoutes(userRouters)
-        router.options.routes.push(...userRouters)
-        next({ ...to, replace: true })
-      })
+    if (to.path === '/login') {
+      // if is logged in, redirect to the home page
+      next({ path: '/' })
+      NProgress.done()
     } else {
-      next()
+      // 判断是否获取 routers
+      if (store.getters.selfRouters.length <= 0) {
+        await store.dispatch('user/getRouters').then(res => {
+          const { response } = res
+          // 替换 component
+          const userRouters = makeUpRouters(response)
+          // 添加 routers
+          router.addRoutes(userRouters)
+          router.options.routes.push(...userRouters)
+          next({ ...to, replace: true })
+        })
+      } else {
+        next()
+      }
     }
   }
 })

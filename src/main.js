@@ -3,14 +3,8 @@ import App from '@/App.vue'
 import router from '@/router'
 import store from '@/store'
 import {
-  Menu,
-  Submenu,
-  MenuItem,
-  Form,
-  FormItem,
-  Button,
-  Message,
-  Input
+  Menu, Submenu, MenuItem, Form, FormItem, Button, Message, Input,
+  Row, Col, Select, Option, Table, Dialog, TableColumn
 } from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 import '@/permission'
@@ -32,6 +26,13 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Button)
 Vue.use(Input)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Table)
+Vue.use(Dialog)
+Vue.use(TableColumn)
 
 Vue.prototype.$message = Message
 

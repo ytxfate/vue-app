@@ -1,12 +1,13 @@
-import { getRouters, login } from '@/api/user'
+import { getRouters, login, refreshToken } from '@/api/user'
 import { resetRouter } from '@/router/index'
-import { setToken, removeToken } from '@/utils/auth'
+import { setToken, removeToken, setRefreshToken, removeRefreshToken, getRefreshToken } from '@/utils/auth'
 
 export default {
   namespaced: true,
   state: {
     selfRouters: [],
-    token: ''
+    token: '',
+    refreshToken: ''
   },
   mutations: {
     setSelfRouters: (state, routers) => {
@@ -14,6 +15,9 @@ export default {
     },
     setToken: (state, token) => {
       state.token = token
+    },
+    setRefreshToken: (state, refreshToken) => {
+      state.refreshToken = refreshToken
     }
   },
   actions: {
@@ -32,20 +36,49 @@ export default {
         login({ username: formValus.username, password: formValus.password }).then(res => {
           const { response } = res
           commit('setToken', response.jwt)
+          commit('setRefreshToken', response.refresh_jwt)
           setToken(response.jwt)
+          setRefreshToken(response.refresh_jwt)
           resolve(res)
         }).catch(error => {
           reject(error)
         })
       })
     },
-    logout ({ commit, state }) {
-      return new Promise((resolve, reject) => {
+    logout ({ commit }) {
+      return new Promise((resolve) => {
         commit('setSelfRouters', [])
         commit('setToken', '')
+        commit('setRefreshToken', '')
         removeToken()
+        removeRefreshToken()
         resetRouter()
         resolve()
+      })
+    },
+    resetToken ({ commit }) {
+      return new Promise((resolve) => {
+        commit('setSelfRouters', [])
+        commit('setToken', '')
+        commit('setRefreshToken', '')
+        removeToken()
+        removeRefreshToken()
+        resetRouter()
+        resolve()
+      })
+    },
+    refreshToken ({ commit }) {
+      return new Promise((resolve, reject) => {
+        refreshToken({ refresh_jwt: getRefreshToken() }).then(res => {
+          const { response } = res
+          commit('setToken', response.jwt)
+          commit('setRefreshToken', response.refresh_jwt)
+          setToken(response.jwt)
+          setRefreshToken(response.refresh_jwt)
+          resolve(res)
+        }).catch(error => {
+          reject(error)
+        })
       })
     }
   }

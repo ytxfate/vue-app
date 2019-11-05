@@ -13,3 +13,17 @@ export function setToken (token) {
 export function removeToken () {
   return Cookies.remove(tokenKeyName)
 }
+
+const refreshTokenKeyName = 'vue-app-refresh-token'
+
+export function getRefreshToken () {
+  return Cookies.get(refreshTokenKeyName)
+}
+
+export function setRefreshToken (refreshToken) {
+  return Cookies.set(refreshTokenKeyName, refreshToken)
+}
+
+export function removeRefreshToken () {
+  return Cookies.remove(refreshTokenKeyName)
+}

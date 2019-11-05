@@ -1,7 +1,7 @@
 <template>
   <div class="nav-div">
     <el-menu
-      default-active="2"
+      :default-active="defaultSelectMenu"
       class="el-menu-vertical-demo"
       background-color="#52616a"
       text-color="#fff"
@@ -23,6 +23,11 @@ import router from '@/router/index'
 import SidebarItem from './SidebarItem.vue'
 export default {
   name: 'Nav',
+  data () {
+    return {
+      defaultSelectMenu: '/'
+    }
+  },
   computed: {
     routerRoutes: () => {
       return router.options.routes
@@ -30,6 +35,9 @@ export default {
   },
   components: {
     SidebarItem
+  },
+  created () {
+    this.defaultSelectMenu = this.$route.path
   }
 }
 </script>

@@ -15,3 +15,11 @@ export function getRouters (data) {
     data
   })
 }
+
+export function refreshToken (data) {
+  return request({
+    url: '/user/refresh_login_status',
+    method: 'post',
+    data
+  })
+}
