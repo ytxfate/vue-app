@@ -56,12 +56,12 @@ service.interceptors.response.use(
         const config = response.config
         if (!isRefreshing) {
           isRefreshing = true
-          store.dispatch('user/refreshToken').then(res => {
-            config.headers['Authorization'] = res.jwt
+          return store.dispatch('user/refreshToken').then(res => {
+            config.headers['Authorization'] = res.response.jwt
             config.baseURL = ''
-            requests.forEach(cd => cd(res.jwt))
+            requests.forEach(cd => cd(res.response.jwt))
             requests = []
-            service(response.config)
+            return service(config)
           }).catch(() => {
             Message({
               message: '刷新认证信息失败，请重新登录',
